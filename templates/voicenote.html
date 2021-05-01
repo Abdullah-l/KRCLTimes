@@ -1,0 +1,221 @@
+{% extends "base.html" %}
+{% block title %}Submit Voice Note{% endblock title %}
+{% load static %}
+
+{% block content %}
+
+
+</br>
+<script src="{% static "timer.js" %}"></script>
+<style>
+
+  #bord {
+    border: 2px groove #4C4A43;
+    width: 299px;
+    border-radius: 5px;
+  }
+
+  .countdown {
+    display: -webkit-inline-box;
+    font-size: 50px;
+    background-color: #CCE4B4;
+    width: 286px;
+    height: 85px;
+    padding-left: 4.75rem !important;
+    padding-top: 1.55rem !important;
+  }
+
+  .jst-timeout {
+    color: #DC5600;
+  }
+
+  .modal-body {
+    background: var(--light_green3);
+  }
+
+  .modal-footer {
+    background: var(--light_green3);
+    border-top: 0px;
+  }
+
+  audio {
+    margin-top: 40px;
+
+  }
+</style>
+
+<div style="min-height: 80vh;" class="container">
+  <h3>Take The Mic And Share</h3>
+  <!-- <p class="mt-4" id="aboveSubmit">Record a voice note then click submit and we will instantly receive your voice note!</p>
+    <p class="mb-4">Please keep it under 3 minutes.</p> -->
+  <!-- Button to Open the Modal -->
+  <button class="btn btnGreen my-4" data-toggle="modal" data-target="#myModal">
+    Instructions</button>
+
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          This is a recording app for the RadioACTive show on KRCL.
+          Join the conversation and send us your input to have it played on the show!<br><br>
+          <strong>To record a Voice Note:</strong><br>
+          1 - Click the record button and allow microphone access.<br>
+          2 - Click the stop button to finish recording.<br>
+          3 - Enter your name and email to send the Voice Note.
+          <br><br>
+          <strong>Side Notes:</strong><br>
+          - The pause and resume buttons allow you to pause and resume your recording.<br>
+          - Check your browser settings if you still see the message "Please check to see if your microphone is active."
+          <br><br>
+          <strong>Examples of Voice Notes:</strong>
+          <ul style="  list-style-position: outside;   list-style-type: circle;   margin-left: -10px;">
+            <li>Reaction to a show or guest.</li>
+            <li>Ideas for future guests or topics.</li>
+            <li>Questions you've always wanted answered.</li>
+            <li>Your playlist ideas for RadioACTive.</li>
+            <li>Shout out from your group or neighborhood: "This is JANE DOE from FREE THE DUCKS and you're listening to
+              RadioACTive on KRCL."</li>
+            <li>Audio letter to the editor on current events.</li>
+          </ul>
+
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer justify-content-center">
+          <button class="btn btnGreen" data-dismiss="modal">Done</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <p id="mic">Please check to see if your microphone is active.</p>
+
+  <section id="bord" class="p-1">
+    <div class="timer timer2 alert alert-success countdown mb-4" data-minutes-left="3.01"></div><br>
+
+    <!-- <canvas class="visualizer" height="120px" style="display: none; border-radius: 50px; margin-bottom: 20px;"></canvas> -->
+
+    <button class="btn btn-lg mr-2 fas fa-microphone fa-2x vnbtn" disabled id="record"></button>
+
+    <button class="btn btn-lg mr-2 fas fa-stop fa-2x vnbtn" disabled id="stop"></button>
+
+    <button class="btn btn-lg mr-2 fas fa-play fa-2x vnbtn" disabled id="resume"></button>
+
+    <button class="btn btn-lg mr-2 fas fa-pause fa-2x vnbtn" disabled id="pause"></button>
+  </section>
+
+  <section class="" id="recordings">
+
+  </section>
+  </br>
+  <form action="./success" method='POST' id="post-form" enctype="multipart/form-data">
+    <div class="form-group mb-3">
+      <label for="name">Name:</label>
+      <input type="text" class="form-control col-sm-7 col-md-5 col-lg-4" required id="name" placeholder="Enter your name"
+        name="name">
+    </div>
+    <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control col-sm-7 col-md-5 col-lg-4" required id="email" placeholder="Enter your email"
+                name="email">
+        </div>
+    </br>
+    <p class="p-0 col-md-7 col-lg-6">By submitting your Voice Note to KRCL, you consent to any contributions being published for no fee.</p>
+    <button id="submit" class="btn btnGreen">Submit</button>
+  </form>
+  <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Whoopsies..</h4>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          Please record a voicenote before clicking submit.
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btnGreen" data-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+      // $(function(){
+		var timer2 = $('.timer2').startTimer({
+      onComplete: function (element) { console.log('Complete'); }
+      //,onPause: $('.timerpause'), //optional, pause control
+      //onReset: $('.timerreset'), //optional, reset control
+      //onStart: $('.timerstart') //optional, start control
+      //loop: true, //optional, enable loop
+      //loopInterval: 2 //optional
+    });
+  timer2.trigger('resetime');
+  // $("#record").on('click', function (e) {
+  // if (gavePermission) {
+  // timer2.trigger('start');
+  // }
+  // });
+  // $("#pause").on('click', function (e) {
+  // timer2.trigger('pause');
+  // });
+  // $("#resume").on('click', function (e) {
+  // timer2.trigger('resume');
+  // });
+  // $("#stop").on('click', function (e) {
+  // timer2.trigger('complete');
+  // });
+
+  // })
+  $(document).on('submit', '#post-form', function (e) {
+    e.preventDefault()
+    console.log("yo")
+    var fd = document.querySelector("form");
+    form = new FormData(fd)
+    form.append('audio', balob);
+    var btn = document.getElementById('submit');
+    btn.innerHTML = "";
+    var spn = document.createElement("SPAN");
+    spn.classList.add("spinner-border", "spinner-border-sm");
+    var text = document.createTextNode(" Sending..");
+    btn.appendChild(spn);
+    btn.appendChild(text);
+    $.ajax({
+        url: "/voicenote/success",
+        type: 'POST',
+        data: form,
+        processData: false,
+        contentType: false,
+        error: function () {
+            alert("Sorry we are experiencing difficulties at this time, please email your voicenote to radioactive@krcl.org");
+            btn.innerHTML = "Submit";
+        }
+    }).done(function (data) {
+        if (data.success) {
+            window.location.href = data.url;
+        }
+    });
+    // var xhr = new XMLHttpRequest();
+    // xhr.open('POST', 'http://127.0.0.1:8000/voicenote/', true);
+    // xhr.send(form);
+  });
+</script>
+<script src="https://unpkg.com/mp3-mediarecorder@3.4.7"></script>
+<script src={% static "voicenote.js" %}></script>
+</br>
+</br>
+</br>
+{% endblock content %}

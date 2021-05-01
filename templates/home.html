@@ -1,0 +1,274 @@
+{% extends "base.html" %}
+{% block title %}Timeline{% endblock title %}
+
+{% load static %}
+
+{% block timeline %}
+<link title="timeline-styles" rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
+
+<script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
+
+{% endblock timeline %}
+
+{% block content %}
+{% block sticky %} {% endblock sticky %}
+<style>
+:root {
+  --navTabs: #ffffff;
+  --light_green3: #F5FBEF;
+  --light_green2: #E4F2D6;
+  --light_green1: #CCE4B4;
+  --green: #74A541;
+  --light_gray2: #78756c;
+  --light_gray: #4C4A43;
+  --dark_gray: #212121;
+  --light_orange: #ffad78;
+  --orange: #DC5600;
+  --KRCL_Gold: #FAA634;
+}
+
+/* main timeline background */
+.tl-timenav {
+	background-color: var(--light_green2);
+	border-top: 1px solid var(--light_green1);
+}
+
+/* attribution in bottom left corner */
+.tl-timenav .tl-attribution {
+  background-color: var(--light_green2);
+}
+
+.tl-timenav .tl-attribution a {
+	color: var(--light_gray2);
+}
+
+.tl-timenav .tl-attribution a:hover {
+	color: var(--dark_gray);
+}
+
+/* attribution logo in bottom left corner hover */
+.tl-timenav .tl-attribution a:hover .tl-knightlab-logo {
+	background-color: var(--orange);
+}
+
+/* attribution logo in bottom left corner */
+.tl-timenav .tl-attribution .tl-knightlab-logo {
+	background-color: var(--KRCL_Gold);
+}
+
+/* background for the tick marks */
+.tl-timeaxis-background{
+  background-color: #93c75f;
+}
+
+/* tick marks */
+.tl-timeaxis .tl-timeaxis-content-container .tl-timeaxis-major .tl-timeaxis-tick:before,
+.tl-timeaxis .tl-timeaxis-content-container .tl-timeaxis-minor .tl-timeaxis-tick:before {
+	border-left: 1px solid var(--dark_gray);
+}
+
+/* decade years */
+.tl-timeaxis .tl-timeaxis-content-container .tl-timeaxis-major .tl-timeaxis-tick {
+	color: var(--light_gray);
+}
+
+/* years */
+.tl-timeaxis .tl-timeaxis-content-container .tl-timeaxis-minor .tl-timeaxis-tick {
+	color: var(--light_gray2);
+}
+
+/* flag pole */
+.tl-timemarker .tl-timemarker-line-left,
+.tl-timemarker .tl-timemarker-line-right {
+	border-left: 1px solid var(--light_gray2);
+	box-shadow: 1px 1px 1px var(--light_green3);
+}
+
+/* flag pole base */
+.tl-timemarker .tl-timemarker-line-left:after,
+.tl-timemarker .tl-timemarker-line-right:after {
+	background-color: var(--light_gray2);
+}
+
+/* flag */
+.tl-timemarker .tl-timemarker-content-container {
+	background-color: var(--light_gray2);
+	border: 1px solid var(--light_gray2);
+	box-shadow: 1px 1px 1px var(--green);
+}
+
+/* flag text */
+.tl-timemarker .tl-timemarker-content-container .tl-timemarker-content .tl-timemarker-text h2.tl-headline,
+.tl-timemarker .tl-timemarker-content-container .tl-timemarker-content .tl-timemarker-text h2.tl-headline p {
+	color: #fff;
+}
+
+/* icon on flag */
+.tl-timemarker .tl-timemarker-content-container .tl-timemarker-content .tl-timemarker-media-container [class^=tl-icon-],
+.tl-timemarker .tl-timemarker-content-container .tl-timemarker-content .tl-timemarker-media-container [class*=" tl-icon-"] {
+	color: #bfbfbf;
+}
+
+/* spanning center background hover */
+.tl-timemarker:hover .tl-timemarker-timespan {
+	background-color: var(--light_green3);
+}
+
+/* .tl-timemarker:hover .tl-timemarker-timespan .tl-timemarker-timespan-content {
+	background-color: #bfbfbf
+} */
+
+/* flag pole hover */
+.tl-timemarker:hover .tl-timemarker-timespan .tl-timemarker-line-left,
+.tl-timemarker:hover .tl-timemarker-timespan .tl-timemarker-line-right {
+	border-color: var(--light_gray2);
+}
+
+/* flag base hover */
+.tl-timemarker:hover .tl-timemarker-timespan .tl-timemarker-line-left:after,
+.tl-timemarker:hover .tl-timemarker-timespan .tl-timemarker-line-right:after {
+	background-color: var(--dark_gray);
+}
+
+/* flag background hover */
+.tl-timemarker:hover .tl-timemarker-content-container {
+	background-color: var(--light_green1);
+	border-color: var(--light_gray2);
+}
+
+/* flag text hover */
+.tl-timemarker:hover .tl-timemarker-content-container .tl-timemarker-content .tl-timemarker-text h2.tl-headline {
+	color: var(--light_gray);
+}
+
+/* flag icon hover */
+.tl-timemarker:hover .tl-timemarker-content-container .tl-timemarker-content .tl-timemarker-media-container [class^=tl-icon-],
+.tl-timemarker:hover .tl-timemarker-content-container .tl-timemarker-content .tl-timemarker-media-container [class*=" tl-icon-"] {
+	color: var(--light_gray2);
+}
+
+/* flag pole active hover */
+.tl-timemarker:hover.tl-timemarker-active .tl-timemarker-line-left,
+.tl-timemarker:hover.tl-timemarker-active .tl-timemarker-line-right {
+	border-color: var(--light_gray);
+}
+
+/* flag pole base active */
+.tl-timemarker:hover.tl-timemarker-active .tl-timemarker-line-left:after,
+.tl-timemarker:hover.tl-timemarker-active .tl-timemarker-line-right:after {
+	background-color: var(--light_gray);
+}
+
+/* flag pole active non-hover */
+.tl-timemarker.tl-timemarker-active .tl-timemarker-line-left,
+.tl-timemarker.tl-timemarker-active .tl-timemarker-line-right {
+	border-color: var(--light_gray);
+}
+
+/* flag base active non-hover */
+.tl-timemarker.tl-timemarker-active .tl-timemarker-line-left:after,
+.tl-timemarker.tl-timemarker-active .tl-timemarker-line-right:after {
+	background-color: var(--light_gray);
+}
+
+/* flag background active non-hover */
+.tl-timemarker.tl-timemarker-active .tl-timemarker-content-container {
+	background-color: var(--green);
+	border-color: var(--light_gray);
+	box-shadow: 1px 1px 3px var(--light_green3);
+}
+
+/* falg text active */
+.tl-timemarker.tl-timemarker-active .tl-timemarker-content-container .tl-timemarker-content .tl-timemarker-text h2.tl-headline {
+	color: white;
+}
+
+/* flag icon active */
+.tl-timemarker.tl-timemarker-active .tl-timemarker-content-container .tl-timemarker-content .tl-timemarker-media-container [class^=tl-icon-],
+.tl-timemarker.tl-timemarker-active .tl-timemarker-content-container .tl-timemarker-content .tl-timemarker-media-container [class*=" tl-icon-"] {
+	color: var(--light_gray);
+}
+
+/* flag base active 2 */
+.tl-timemarker.tl-timemarker-with-end .tl-timemarker-timespan:after {
+	background-color: var(--light_gray);
+}
+
+/* flag base hover 2 */
+.tl-timemarker.tl-timemarker-with-end:hover .tl-timemarker-timespan:after {
+	background-color: var(--light_gray2);
+}
+
+/* flag base active non-hover */
+.tl-timemarker.tl-timemarker-with-end.tl-timemarker-active .tl-timemarker-timespan:after {
+	background-color: var(--light_gray);
+}
+
+/* flag base active 3 */
+.tl-timemarker.tl-timemarker-with-end.tl-timemarker-active .tl-timemarker-line-left:after,
+.tl-timemarker.tl-timemarker-with-end.tl-timemarker-active .tl-timemarker-line-right:after {
+	background-color: var(--light_green1)!important
+}
+
+/* flag base active hover */
+.tl-timemarker.tl-timemarker-with-end.tl-timemarker-active:hover .tl-timemarker-timespan:after {
+	background-color: var(--light_gray);
+}
+
+/* zoom in icon symbol */
+.tl-icon-zoom-in:after {
+  color: var(--light_gray);
+}
+
+/* zoom out icon symbol */
+.tl-icon-zoom-out:after {
+  color: var(--light_gray);
+}
+
+/* go back icon symbol */
+.tl-icon-goback:after {
+	color: var(--light_gray);
+}
+
+/* move icons background */
+.tl-menubar-button {
+	background-color: var(--light_orange);
+}
+
+/* move icons background hover */
+.tl-menubar-button:hover {
+	background: var(--orange);
+}
+
+/* move icons background mobile */
+.tl-mobile .tl-menubar-button {
+	background-color: var(--light_orange);
+}
+
+/* move icons background hover moblie */
+.tl-mobile .tl-menubar-button:hover {
+	background: var(--orange);
+}
+.tl-attribution {
+  display: none;
+}
+
+.tl-timemarker .tl-timemarker-content-container .tl-timemarker-content .tl-timemarker-text h2.tl-headline.tl-headline-fadeout::after {
+	background: none;
+}
+.tl-timemarker:hover .tl-timemarker-content-container .tl-timemarker-content .tl-timemarker-text h2.tl-headline.tl-headline-fadeout::after {
+	background: none;
+}
+.tl-timemarker.tl-timemarker-active .tl-timemarker-content-container .tl-timemarker-content .tl-timemarker-text h2.tl-headline.tl-headline-fadeout::after {
+		background: none;
+}
+.tl-timemarker:hover.tl-timemarker-active .tl-timemarker-content-container .tl-timemarker-content .tl-timemarker-text h2.tl-headline.tl-headline-fadeout::after {
+			background: none;
+}
+</style>
+<!-- <iframe id="p" src="https://krcl.org/listen-live/"></iframe> -->
+<div id='timeline-embed' style="width: 100%; height: 90vh"></div>
+<script type="text/javascript">
+  timeline = new TL.Timeline('timeline-embed', '{% get_media_prefix %}2.json');
+</script>
+{% endblock content %}

@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% block title %}Contact Us{% endblock title %}
+{% block content %}
+
+<div style="min-height: 80vh;" id="yo" class="container mt-5">
+  <div class="row">
+    <div class="col-md-5 col-12">
+      <h1>Contact Us</h1>
+      <div>
+        <p><strong>90.9fm KRCL&nbsp;</strong><br /><strong><a
+              href="https://www.google.com/maps/place/90.9fm+KRCL+Listeners+Community+Radio+of+Utah/@40.7703385,-111.9497801,17z/data=!4m7!1m4!3m3!1s0x8752f479efdc1303:0xcaf11eed5352a0e3!2s1971+W+North+Temple,+Salt+Lake+City,+UT+84116!3b1!3m1!1s0x8752f479e557b67d:0x9e117cd5f64f9c6">1971
+              West North Temple<br>Salt Lake City, UT 84116</a></strong><br /></p>
+        <p>Main Office: (801) 363-1818<br />Studio Line: (801) 359-9191 or (800) 359-9191&nbsp;<br />Comments: <a
+            href="mailto:radioactive@krcl.org">radioactive@krcl.org</a> <br /><a
+            href="https://krcl.org/events/create-an-event/">Submit a community event</a></p>
+        <p><a href="https://krcl.org/blog/directions-to-the-krcl-studios/" target="_blank">Directions to KRCL</a></p>
+        <p><a
+            href="https://www.google.com/maps/place/1971+W+North+Temple,+Salt+Lake+City,+UT+84116/@40.7702015,-111.9473811,3a,75y,103.57h,78.08t/data=!3m9!1e1!3m7!1siB8tJG8vEC2-vCOmYLpkUg!2e0!7i13312!8i6656!9m2!1b1!2i40!4m5!3m4!1s0x8752f479efdc1303:0xcaf11eed5352a0e3!8m2!3d40.7702435!4d-111.9476743"
+            target="_blank">Google Map Streetview</a></p>
+      </div>
+    </div>
+    <div class="d-none d-md-flex col-md-7">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3021.621971945822!2d-111.9497801!3d40.7703385!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8752f479e557b67d%3A0x9e117cd5f64f9c6!2s90.9fm%20KRCL%20Listeners%20Community%20Radio%20of%20Utah!5e0!3m2!1sen!2sus!4v1575392537142!5m2!1sen!2sus" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="row">
+    <div class="col">
+      <form method='POST'>
+        {{ form.errors }}
+        {{ form.non_field_errors }}
+        <div class="form-group">
+          <h4>Email RadioACTive</h4>
+          <div class="form-group">
+              <label for="Email">Email:</label>
+              <input type="email" class="form-control col-md-8 col-lg-6" required id="Email" placeholder="Enter your Email"
+                name="Subject">
+            </div>
+          <label for="Subject">Subject:</label>
+          <input type="text" class="form-control col-md-8 col-lg-6" required id="Subject" placeholder="Enter a Subject"
+            name="Subject">
+        </div>
+        <div class="form-group">
+          <label for="message">Message:</label>
+          <textarea type="text" rows="4" class="form-control col-md-8 col-lg-6" required id="message"
+            placeholder="Enter your Message" name="message"></textarea>
+        </div>
+
+        <button type='submit' value='Save' class="btn btnGreen mb-5">Send</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* unvisited link */
+  #yo a:link {
+    color: #74A541;
+    border-bottom: 1px solid currentColor;
+  }
+
+  /* visited link */
+  #yo a:visited {
+    color: #74A541;
+    border-bottom: 1px solid currentColor;
+  }
+
+  /* mouse over link */
+  #yo a:hover {
+    color: #DC5600;
+    border-bottom: 0px;
+    text-decoration: none;
+  }
+
+  /* selected link */
+  #yo a:active {
+    color: #FAA634;
+  }
+</style>
+
+</div>
+
+{% endblock content %}

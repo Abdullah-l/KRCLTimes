@@ -1,0 +1,213 @@
+
+:root {
+  
+  /*  OLD Colors
+  --Donar_Brown: #372416;
+  --Fall_Donor: #E58E3D;
+  --Fall_Brown: #715437;
+  --Fall_Green: #686144;
+  --KRCL_White: #F9F6DC;
+  --Side1: #F5B44F;
+  --Side2: #080809;
+  --navTabs: #E8CE0E; */
+
+  --navTabs: #ffffff;
+  --light_green3: #F5FBEF;
+  --light_green2: #E4F2D6;
+  --light_green1: #CCE4B4;
+  --green: #74A541;
+  --light_gray2: #78756c;
+  --light_gray: #4C4A43;
+  --dark_gray: #212121;
+  --orange: #DC5600;
+}
+
+body {
+  background: white;
+  font-family: Georgia, sans-serif;
+  line-height:1.6em;
+}
+
+.form-control {
+  border-color: var(--green);
+  background-color: var(--light_green3);
+}
+
+.form-control:focus {
+    border-color: var(--green);
+    box-shadow: 0 0 0 0.2rem rgba(116, 165, 65, 0.25);
+    background-color: var(--light_green3);
+}
+
+h1 {
+  color: var(--dark_gray);
+}
+
+#topbar a{
+color: var(--dark_gray);
+}
+
+.btnGreen {
+  background-color: var(--green);
+  color: white;
+}
+
+.btnGreen:focus {
+  box-shadow: 0 0 0 0.2rem var(--light_green);
+}
+
+.navbar {
+  background: var(--light_gray);
+  border-bottom-style: solid;
+  border-bottom-width: thick;
+  border-bottom-color: var(--orange);
+}
+
+ .navbar-nav{
+  margin-top: 12px;
+ }
+
+.navbar-nav>li{
+  margin-left: 30px;
+  padding-bottom: 15px;
+  font-size: 16px;
+}
+
+.navbar-nav > li > a {
+  padding: 5px 10px;
+  margin: 0;
+  border-radius: 3px;
+  color: var(--navTabs);
+  line-height: 24px;
+  display: inline-block;
+}
+
+.navbar-nav > li > a:hover{
+	background-color: var(--light_gray2);
+  color: white;
+}
+
+ .navbar-nav > .active > a,
+ .navbar-nav > .active > a:hover,
+ .navbar-nav > .active > a:focus,
+ .navbar-nav > .open > a,
+ .navbar-nav > .open > a:hover,
+ .navbar-nav > .open > a:focus {
+  background-color: var(--green);
+  color: white;
+}
+
+.navbar-nav .nav-link {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+a {
+  color: var(--green);
+  -webkit-transition: color 300ms, background-color 300ms;
+  -moz-transition: color 300ms, background-color 300ms;
+  -o-transition:  color 300ms, background-color 300ms;
+  transition:  color 300ms, background-color 300ms;
+}
+
+#footer {
+  padding-top: 30px;
+  color: white;
+  background: var(--dark_gray);
+}
+
+#footer a {
+  color: white;
+}
+
+#footer a:hover {
+  color: var(--light_green1);
+}
+
+#foot-logo {
+  border-bottom-style: solid;
+  border-bottom-width: medium;
+  border-bottom-color: var(--orange);
+  padding-bottom: 10px;
+}
+
+.footer-copyright {
+  overflow: hidden;
+  height: 50px;
+  line-height: 50px;
+  background-color: #7e7e7e33;
+  text-align: center;
+  font-size: .9rem;
+}
+
+.nav-tabs .nav-link:hover {
+  border: 1px solid transparent;
+  border-top-left-radius: .25rem;
+  border-top-right-radius: .25rem;
+  background-color: var(--light_green2);
+  border-color: var(--light_green1);
+  color: var(--dark_gray);
+}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+  color: white;
+  background-color: var(--green);
+  border-color: var(--dark_gray);
+}
+
+/* .topbar {
+  overflow: hidden;
+  height: 40px;
+  align-content: center;
+  background-color: var(--Fall_Green);
+}
+
+.topbar a {
+  color: var(--KRCL_White);
+} */
+
+/* Recording buttons styles */
+
+.vnbtn {
+  /* background-color: var(--green); */
+  border-color: var(--light_green3);
+  color: black;
+  }
+
+.vnbtn:focus {
+      box-shadow: 0 0 0 0.2rem var(--light_green1);
+}
+
+.vnbtn:disabled {
+  background: linear-gradient(to left top, transparent 47.75%, currentColor 49.5%, currentColor 50.5%, transparent 52.25%);
+}
+
+  /* #stop {
+  background-color: var(--Fall_Brown);
+  border-color: var(--Fall_Brown);
+  color: var(--KRCL_White);
+
+  }
+
+  #stop:focus {
+      box-shadow: 0 0 0 0.2rem rgba(113, 84, 54,.5);
+  }
+  #resume {
+  background-color: var(--Donar_Brown);
+  border-color: var(--Donar_Brown);
+  color: var(--KRCL_White);
+
+  }
+
+  #resume:focus {
+      box-shadow: 0 0 0 0.2rem rgba(55, 36, 22,.5);
+  }
+
+  #pause {
+  background-color: var(--Fall_Green);
+  border-color: var(--Fall_Green);
+  color: var(--KRCL_White);
+  }
+
+  #pause:focus {
+      box-shadow: 0 0 0 0.2rem rgba(104, 97, 68,.5);
+  } */

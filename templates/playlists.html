@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block title %}Playlist{% endblock title %}
+
+{% block content %}
+
+<style>
+
+ /* --redish: #F05133;
+  --maroon: #9b1046; */
+  #p {
+    border: 0px none;
+    margin-top: -134px;
+    margin-bottom: -21vh;
+    min-height: 3500px;
+    width: 100vw;
+  }
+  .container {
+      padding-left: 0px;
+      padding-right: 0px;
+      margin-left: 0px;
+      margin-right: 0px;
+    }
+  @media only screen and (max-width: 352px) {
+    #p {
+      /* margin-top: -132px; */
+    }
+  }
+
+  @media only screen and (min-width: 352px) {
+    #p {
+      /* margin-top: -132px; */
+    }
+  }
+
+  @media only screen and (min-width: 764px) {
+    #p {
+      margin-top: -153px;
+      width: 765px;
+      min-height: 3290px;
+      margin-left: -15px;
+      margin-right: -15px;
+      margin-bottom: -24vh;
+    }
+    .container {
+      padding-left: 0px;
+      padding-right: 0px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  @media only screen and (min-width: 1200px) {
+    #p {
+      margin-top: -153px;
+      width: 765px;
+      min-height: 3290px;
+      margin-left: -15px;
+      margin-right: -15px;
+      margin-bottom: -24vh;
+    }
+    .container {
+      padding-left: 0px;
+      padding-right: 0px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+</style>
+<div style="min-height: 80vh;" class="container mt-5">
+  <div class="row no-gutters">
+    <div class="mx-md-auto mt-3">
+        <h1 class="mb-5">Daily Playlist</h1>
+      <div style="overflow: hidden;">
+        <iframe id="p"  src="https://krcl.org/playlist/"></iframe>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</br>
+</br>
+</br>
+{% endblock content %}
